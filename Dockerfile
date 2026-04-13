@@ -1,14 +1,17 @@
-# Step 1: Base image
-FROM python:3.9
+# Use Python base image
+FROM python:3.9-slim
 
-# Step 2: Set working directory
+# Set working directory
 WORKDIR /app
 
-# Step 3: Copy files
+# Copy files
 COPY . .
 
-# Step 4: Install dependencies
-RUN pip install -r requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Step 5: Run app
+# Expose port
+EXPOSE 5000
+
+# Run app
 CMD ["python", "app.py"]
